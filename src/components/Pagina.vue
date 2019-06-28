@@ -1,6 +1,13 @@
 <template>
   <div>
     Pagina
+    <div class="btn btn-light" v-on:click="generaTodos">Genera todos</div>
+    <div v-for="elemento in elementi" :key="elemento.id">
+
+        {{elemento.title}}
+        {{elemento.id}}
+
+    </div>
   </div>
 </template>
 
@@ -13,14 +20,21 @@ export default {
   },
   data() {
     return {
-   
+      elementi: [],
     }
   },
   created: function () {
 
   },
   methods: {
-   
+    generaTodos() {
+      fetch('https://jsonplaceholder.typicode.com/todos')
+      .then(response => response.json())
+      .then(json => 
+      this.elementi = json
+      // console.log(json)
+      )
+    },
   },
 }
 </script>

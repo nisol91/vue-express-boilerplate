@@ -16,20 +16,18 @@ Vue.use(BootstrapVue)
 //vue router 
 import router from './router'
 
-//ionic
-// import '@ionic/core/css/core.css';
-// import '@ionic/core/css/ionic.bundle.css';
-
-// import IonicVue from '@ionic/vue';
-
-// Vue.use(IonicVue);
-
 
 //axios
 import VueAxios from 'vue-axios';
 import axios from 'axios';
 
 Vue.use(VueAxios, axios);
+
+
+
+
+
+//-------------
 
 Vue.config.productionTip = false
 

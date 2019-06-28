@@ -1,20 +1,20 @@
 <template>
   <div>
-    <h1>Create A Post.</h1>
-    <form @submit.prevent="addPost">
+    <h1>Create A Note.</h1>
+    <form @submit.prevent="addNote">
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <label>Post Title:</label>
-            <input type="text" class="form-control" v-model="post.title">
+            <label>Note Title:</label>
+            <input type="text" class="form-control" v-model="note.title">
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <label>Post Body:</label>
-            <textarea class="form-control" v-model="post.body" rows="5"></textarea>
+            <label>Note Body:</label>
+            <textarea class="form-control" v-model="note.body" rows="5"></textarea>
           </div>
         </div>
       </div><br />
@@ -30,20 +30,22 @@
   export default {
     data() {
       return {
-        post: {}
+        note: {}
       }
     },
     methods: {
-      addPost() {
-        console.log(this.post.title);
-        console.log(this.post.body);
+      addNote() {
+        console.log(this.note.title);
+        console.log(this.note.body);
 
         
-        let uri = 'http://localhost:6052/posts/add';
-        this.axios.post(uri, this.post).then(() => {
+        let uri = 'http://localhost:6052/notes/add';
+        this.axios.post(uri, this.note).then(() => {
           this.$router.push({
             name: 'Form'
           });
+          console.log(this.note);
+          
         });
 
       }

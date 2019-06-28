@@ -6,10 +6,9 @@ import Elenco from '@/components/Elenco'
 import Form from '@/components/Form'
 import Posts from '@/components/Posts'
 import Edit from '@/components/Edit'
-
+import Notes from '@/components/Notes'
+import FormNotes from '@/components/FormNotes'
 import ElementoSingolo from '@/components/ElementoSingolo'
-
-
 
 
 
@@ -41,6 +40,16 @@ let router = new Router({
 			path: '/posts',
 			name: 'Posts',
 			component: Posts
+		},
+		{
+			path: '/notes',
+			name: 'Notes',
+			component: Notes
+		},
+		{
+			path: '/form-notes',
+			name: 'FormNotes',
+			component: FormNotes
 		},
 		{
 			path: '/edit/:id',

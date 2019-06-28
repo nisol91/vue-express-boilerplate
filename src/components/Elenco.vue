@@ -1,6 +1,7 @@
 <template>
   <div>
-    Elenco
+    
+    <b-spinner variant="success" label="Spinning" v-if="mostraSpinner === true"></b-spinner>
     <div v-for="elemento in elementi" :key="elemento.id">
       <router-link :to="{ name: 'ElementoSingolo', params: { elementoId: elemento.id, elementoTitolo: elemento.title } }">
 
@@ -22,16 +23,30 @@
     data() {
       return {
         elementi: [],
+        mostraSpinner: true
       }
     },
-    created: function () {
-      this.getDataFromAPI()
+    // created: function () {
+      
+    //   setTimeout(this.getDataFromAPI(), 3000);
+
+    //   setTimeout(this.toggleSpinner(), 2000);
+
+    // },
+    created: function() {
+      setTimeout(
+        () => (
+          this.getDataFromAPI()
+          ), 2000)
     },
     methods: {
       async getDataFromAPI() {
         try {
           const req = await fetch('https://jsonplaceholder.typicode.com/todos')
 
+          this.mostraSpinner = false
+          console.log(this.mostraSpinner);
+          
           this.elementi = await req.json()
           console.log(this.elementi);
 

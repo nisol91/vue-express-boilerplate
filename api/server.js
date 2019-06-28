@@ -4,11 +4,13 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const PORT = 4040;
+const PORT = 6052;
 const cors = require('cors');
 const mongoose = require('mongoose');
 const config = require('./DB.js');
 const postRoute = require('./post.route');
+const noteRoute = require('./note.route');
+
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB, {
@@ -29,6 +31,8 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.use('/posts', postRoute);
+app.use('/notes', noteRoute);
+
 
 app.listen(PORT, function () {
 	console.log('Server is running on Port:', PORT);

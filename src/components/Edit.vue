@@ -1,25 +1,26 @@
 <template>
   <div>
-    <h1>Edit Post with name {{post.title}}</h1>
+    <b-alert variant="success" v-model="showAlert">Elemento Modificato con successo</b-alert>
+    <h1>Edit Element with name {{element.title}}</h1>
     <form @submit.prevent="updatePost">
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <label>Post Title:</label>
-            <input type="text" class="form-control" v-model="post.title">
+            <label>Title:</label>
+            <input type="text" class="form-control" v-model="element.title">
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <label>Post Body:</label>
-            <textarea class="form-control" v-model="post.body" rows="5"></textarea>
+            <label>Body:</label>
+            <textarea class="form-control" v-model="element.body" rows="5"></textarea>
           </div>
         </div>
       </div><br />
       <div class="form-group">
-        <button class="btn btn-primary" >Edit</button>
+        <button v-on:click="showAlert=true" class="btn btn-primary" >Edit</button>
       </div>
     </form>
   </div>
@@ -30,21 +31,22 @@
   export default {
     data() {
       return {
-        post: {
+        element: {
           title: this.$route.params.title,
           body: this.$route.params.body,
-        }
+        },
+        showAlert: false,
       }
     },
     methods: {
       updatePost() {
-        let uri = `http://localhost:4040/posts/update/${this.$route.params.id}`;
-        this.axios.post(uri, this.post).then(() => {
-          this.$router.push({
-            name: 'Posts'
-          });
+        let uri = `http://localhost:6052/posts/update/${this.$route.params.id}`;
+        this.axios.post(uri, this.element).then(() => {
+          // this.$router.push({
+          //   name: 'Home'
+          // });
         });
-        alert('post edited')
+        // alert('element edited')
       },
     }
   }

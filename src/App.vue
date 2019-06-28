@@ -7,6 +7,9 @@
         <router-link to="/elenco">Elenco</router-link>
         <router-link to="/form">Form</router-link>
         <router-link to="/posts">Posts</router-link>
+        <router-link to="/form-notes">Add Note</router-link>
+        <router-link to="/notes">All Notes</router-link>
+
 
       </b-nav>
     </div>
@@ -32,14 +35,6 @@ import ElementoSingolo from './components/ElementoSingolo.vue'
 import Form from './components/Form.vue'
 import Posts from './components/Posts.vue'
 import Edit from './components/Edit.vue'
-
-
-
-
-
-
-
-
 export default {
   name: 'app',
   components: {
@@ -70,14 +65,10 @@ export default {
   transition-property: opacity;
   transition-timing-function: ease;
 }
-
 .fade-enter,
 .fade-leave-active {
   opacity: 0
 }
-
-
-
 a {
   margin: 0 10px;
   color: green!important;
