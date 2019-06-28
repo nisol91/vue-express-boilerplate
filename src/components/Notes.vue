@@ -22,7 +22,7 @@
         <tr v-for="note in notes" :key="note._id">
           <td>
             <b-form-checkbox id="checkbox-1" v-model="status" name="checkbox-1" value="done"
-              unchecked-value="" @change="doneTask(note._id)"></b-form-checkbox>
+              unchecked-value="" @change="doneTask()"></b-form-checkbox>
               {{status}}
           </td>
           <td ><h4 v-bind:class="{ fatto: isFatto }" >{{ note.title }}</h4></td>
@@ -56,9 +56,8 @@
       });
     },
     methods: {
-      doneTask(_id) {
-        // this.isFatto = !this.isFatto
-        console.log(this.notes.indexOf(id));
+      doneTask() {
+        this.isFatto = !this.isFatto
         
       },
       deletePost(id) {
